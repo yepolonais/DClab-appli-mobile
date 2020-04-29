@@ -1,12 +1,23 @@
 import React from 'react';
 
-import { StyleSheet,View, ScrollView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { StyleSheet, View, ScrollView } from 'react-native';
 
 import Article from './components/Article';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Articles from './components/Articles';
+import Profile from './components/Profile';
+
+
+
+
+
+
+const Tab = createBottomTabNavigator();
 
 
 export default function App() {
@@ -52,22 +63,45 @@ export default function App() {
 
 
   return (
+
     <View style={styles.container}>
-      <View style={styles.phoneHeader}></View>
-      <View style={styles.header}>
-        <Header />
-      </View>
-      <ScrollView style={styles.article}>
-        <Articles articles={articles} />
-      </ScrollView>
-      {/* <ScrollView style={styles.article}>
-          <Article article={articleRecupereDepuisLAPI} />
-      </ScrollView> */}
-      <View style={styles.footer}>
-        <Footer />
-      </View>
+
+      <NavigationContainer>
+
+        <View style={styles.phoneHeader}></View>
+        <View style={styles.header}>
+          <Header />
+        </View>
+        {/* <ScrollView style={styles.article}>
+          <Articles articles={articles} />
+        </ScrollView> */}
+        {/* <ScrollView style={styles.article}>
+            <Article article={articleRecupereDepuisLAPI} />
+        </ScrollView> */}
+        {/* <View style={styles.footer}>
+          <Footer />
+        </View> */}
+        <Tab.Navigator>
+          <Tab.Screen name="Articles" component={() => <Articles articles={articles} />} />
+          <Tab.Screen name="Profile" component={Profile} />
+        </Tab.Navigator>
+
+      </NavigationContainer>
+
     </View>
+
   );
+
+  // return (
+  //   <NavigationContainer>
+  //     <Tab.Navigator>
+  //       <Tab.Screen name="Articles" component={() => <Articles articles={articles}/>} />
+  //       <Tab.Screen name="Profile" component={Profile} />
+  //     </Tab.Navigator>
+  //   </NavigationContainer>
+  // );
+
+
 }
 
 

@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function Footer() {
 
     return (
-        <View style={[styles.header]}>
+        <View style={[styles.footer]}>
             <Text style={[styles.defaultPolice]}> LE FOOTER</Text>
         </View>
     )
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     defaultPolice: {
         color: "white",
     },
-    header: {
+    footer: {
         backgroundColor:"#00263E",
         flex: 1,
     }
