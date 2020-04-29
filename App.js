@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { StyleSheet, View, ScrollView } from 'react-native';
@@ -15,7 +15,14 @@ import Profile from './components/Profile';
 
 
 
-
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'rgba(255, 45, 85, 0)',
+    card:'#aaa',
+  },
+};
 
 const Tab = createBottomTabNavigator();
 
@@ -66,7 +73,7 @@ export default function App() {
 
     <View style={styles.container}>
 
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
 
         <View style={styles.phoneHeader}></View>
         <View style={styles.header}>
