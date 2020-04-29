@@ -1,13 +1,15 @@
 import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet,View, ScrollView } from 'react-native';
 
 import Article from './components/Article';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 
 
 
 
 export default function App() {
-
 
   let articleRecupereDepuisLAPI = {
     titre: "La plus grande pizza du monde",
@@ -27,9 +29,17 @@ export default function App() {
 
 
   return (
-    <ScrollView style={styles.container}>
-      <Article article={articleRecupereDepuisLAPI} />
-    </ScrollView>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Header />
+      </View>
+      <ScrollView style={styles.article}>
+          <Article article={articleRecupereDepuisLAPI} />
+      </ScrollView>
+      <View style={styles.footer}>
+        <Footer />
+      </View>
+    </View>
   );
 }
 
@@ -37,9 +47,23 @@ export default function App() {
 const styleObject = {
   container: {
     flex: 1,
-    backgroundColor: "black",
-    // justifyContent: 'flex-start',
-    // alignItems: 'center',
+    backgroundColor: "#00A3AD",
+  },
+  header: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex:1,
+  },
+  article:{
+    margin:15,
+  },
+  footer: {
+    position:'fixed',
+    bottom:0,
+    left:0,
+    right:0,
   },
 }
 

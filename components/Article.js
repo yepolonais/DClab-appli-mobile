@@ -36,11 +36,10 @@ export default function Article(props) {
 
 const styles = StyleSheet.create({
     defaultPolice:{
-        color: "white",
+        color: "black",
     },
     article: {
-        // alignItems: "stretch",
-        // justifyContent: 'space-between',
+        backgroundColor:"white",
         paddingVertical:40,
         paddingHorizontal:20,
         flex: 1,
@@ -50,7 +49,9 @@ const styles = StyleSheet.create({
         width: null,
     },
     articleTitle: {
+        backgroundColor: "#6CC24A",
         alignSelf: "center",
+        paddingVertical:10,
         textAlign:"center",
         marginBottom: 40,
         fontSize: 40,
