@@ -6,7 +6,7 @@ export default function Header() {
 
     return (
         <View style={[styles.header]}>
-            <Text> LE HEADER</Text>
+            <Text style={[styles.defaultPolice]}> LE HEADER</Text>
         </View>
     )
 }
@@ -16,7 +16,10 @@ const styles = StyleSheet.create({
         color: "#00263E",
     },
     header:{
-
+        flex:1,
+        borderTopWidth:1,
+        borderBottomWidth: 1,
+        borderColor:"#00263E",
     }
     
 });

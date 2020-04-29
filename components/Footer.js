@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     },
     header: {
         backgroundColor:"#00263E",
+        flex: 1,
     }
 
 });

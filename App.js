@@ -1,12 +1,12 @@
 import React from 'react';
+
 import { StyleSheet,View, ScrollView } from 'react-native';
 
 import Article from './components/Article';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-
-
+import Articles from './components/Articles';
 
 
 export default function App() {
@@ -27,15 +27,42 @@ export default function App() {
     },
   }
 
+  let articles = [
+    {
+      title: "30 millions d'amis",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      img: "corgi.jpg",
+      publishingDate: new Date(),
+      author: {
+        lastname: "Fraisseix",
+        firstname: 'César',
+      }
+    },
+    {
+      title: "Takoyaki",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      img: "corgi.jpg",
+      publishingDate: new Date(),
+      author: {
+        lastname: "Fraisseix",
+        firstname: 'César',
+      }
+    }
+  ]
+
 
   return (
     <View style={styles.container}>
+      <View style={styles.phoneHeader}></View>
       <View style={styles.header}>
         <Header />
       </View>
       <ScrollView style={styles.article}>
-          <Article article={articleRecupereDepuisLAPI} />
+        <Articles articles={articles} />
       </ScrollView>
+      {/* <ScrollView style={styles.article}>
+          <Article article={articleRecupereDepuisLAPI} />
+      </ScrollView> */}
       <View style={styles.footer}>
         <Footer />
       </View>
@@ -49,21 +76,20 @@ const styleObject = {
     flex: 1,
     backgroundColor: "#00A3AD",
   },
-  header: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex:1,
+  phoneHeader: {
+    height: '4%',
+    backgroundColor: "rgba(0,0,0,0.2)"
   },
-  article:{
-    margin:15,
+  header: {
+    color: "black",
+    height: '6%',
+  },
+  article: {
+    marginHorizontal: 15,
   },
   footer: {
-    position:'fixed',
-    bottom:0,
-    left:0,
-    right:0,
+    height: 40,
+    backgroundColor: "grey"
   },
 }
 
