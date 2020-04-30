@@ -10,7 +10,6 @@ export default function ArticleCard(props) {
         <TouchableHighlight 
             onPress={() => {props.onPress(props.article)}}
             underlayColor="white"
-        
         >
             <View style={styles.container}>
                 <Text>{props.article.titre}</Text>
@@ -23,12 +22,13 @@ export default function ArticleCard(props) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "white",
-        margin: 10,
+        margin: 15,
         padding: 10,
+        borderRadius:10,
         elevation: 20,
         shadowColor: "#00263E",
         shadowOpacity: 5,
-        shadowRadius: 15,
+        shadowRadius: 10,
     },
 
 })
