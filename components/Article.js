@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { ScrollView,View, Text, Image, StyleSheet } from 'react-native';
 
 
 export default function Article(props) {
@@ -8,7 +8,7 @@ export default function Article(props) {
     let stringDate = "" + props.article.dateDePublication
 
     return (
-        <View style={[styles.article]}>
+        <ScrollView style={[styles.article]}>
                 <View style={styles.articleBody}>
                     <Text style={[styles.defaultPolice, styles.articleTitle]}>{props.article.titre}</Text>
                     <Image
@@ -30,7 +30,7 @@ export default function Article(props) {
                         </View>
                     </View>
                 </View>
-        </View>
+        </ScrollView>
     )
 }
 
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     },
     articleFooter:{
         backgroundColor:"white",
-        
+        marginBottom:50,
     },
     articleAuthor: {
         alignSelf: "flex-end",

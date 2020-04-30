@@ -13,7 +13,7 @@ export default function Articles(props) {
             data={props.articles}
             renderItem={(data) => {
                 //console.log("Flatlist renderItem index", data.index, " : ", data.item)
-                return <ArticleCard article={data.item} />
+                return <ArticleCard article={data.item} onPress={props.onArticleCardPress} />
             }}
             keyExtractor={item => item.id}
         />
