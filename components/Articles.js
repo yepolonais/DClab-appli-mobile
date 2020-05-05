@@ -8,14 +8,21 @@ export default function Articles(props) {
 
     //console.log("Articles.js props.articles", props.articles);
     
+    const renderItem = (data) => {
+        return <ArticleCard 
+        article={data.item} 
+        index={data.index}
+        onPress={props.onArticleCardPress}/>
+    };
+
+    const keyExtractor = (item, index) => index.toString();
+
+
     return (
         <FlatList
             data={props.articles}
-            renderItem={(data) => {
-                //console.log("Flatlist renderItem index", data.index, " : ", data.item)
-                return <ArticleCard article={data.item} onPress={props.onArticleCardPress} />
-            }}
-            keyExtractor={item => item.id}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
         />
     );
 

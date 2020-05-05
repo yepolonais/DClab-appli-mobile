@@ -5,10 +5,15 @@ import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 
 export default function ArticleCard(props) {
 
-    //console.log("ArticleCard.js props.article", props.article)
+
+    const onPress = () => {
+        console.log('ArticleCard', props.index);
+        props.onPress(props.index)
+    };
+
     return (
         <TouchableHighlight 
-            onPress={() => {props.onPress(props.article)}}
+            onPress={onPress}
             underlayColor="white"
         >
             <View style={styles.container}>
