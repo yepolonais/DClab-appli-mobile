@@ -1,25 +1,36 @@
+
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, View, Button, StyleSheet } from 'react-native';
 
 
-export default function Header() {
+export default function Header(props) {
 
     return (
-        <View style={[styles.header]}>
-            <Text style={[styles.defaultPolice]}> LE HEADER</Text>
+        <View style={styles.header}>
+            <Text style={styles.title}>DC lab</Text>
+            {props.user !== undefined &&
+                <View style={styles.profileButton}>
+                    <Text>{props.user.firstname} {props.user.lastname}</Text>
+                    <Button onPress={props.onLogout} title="Deconnexion" />
+                </View>
+            }
         </View>
     )
 }
 
+
 const styles = StyleSheet.create({
-    defaultPolice: {
-        color: "#00263E",
+    header: {
+        height: 40,
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        alignItems: "center"
     },
-    header:{
-        flex:1,
-        borderTopWidth:1,
-        borderBottomWidth: 1,
-        borderColor:"#00263E",
+    title: {
+        backgroundColor:'white',
+    },
+    profileButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
     }
-    
-});
+})

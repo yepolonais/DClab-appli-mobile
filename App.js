@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,6 +7,8 @@ import { StyleSheet, View } from 'react-native';
 
 import ArticlesPage from './pages/Articles.page';
 import ProfilePage from './pages/Profile.page';
+import LoginPage from './pages/Login.page';
+import Header from './components/Header';
 
 
 const MyTheme = {
@@ -22,16 +24,35 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
 
+  const [loggedInUser, setLoggedInUser] = useState({ username: "test1", password: "pwd1", firstname: "Test", lastname: "One" });
+
+
+  const handleLoginSuccessful = (user) => {
+    setLoggedInUser(user)
+  };
+
+  const handleLogout = () => {
+    setLoggedInUser(undefined)
+  };
+
   return (
-      <NavigationContainer theme={MyTheme}>
-        <View style={styles.container}>
-          <View style={styles.phoneHeader}></View>
-        <Tab.Navigator>
-          <Tab.Screen name="Articles" component={ArticlesPage} />
-          <Tab.Screen name="Profile" component={ProfilePage} />
-          </Tab.Navigator>
-        </View>
-      </NavigationContainer>
+    <View style={styles.container}>
+      <View style={styles.phoneHeader}></View>
+      <Header user={loggedInUser} onLogout={handleLogout} />
+      {loggedInUser &&
+        <NavigationContainer theme={MyTheme}>
+          <View style={styles.container}>
+            <Tab.Navigator>
+              <Tab.Screen name="Articles" component={ArticlesPage} />
+              <Tab.Screen name="Profile" component={ProfilePage} />
+            </Tab.Navigator>
+          </View>
+        </NavigationContainer>
+      }
+      {!loggedInUser &&
+        <LoginPage onLoginSuccessful={handleLoginSuccessful} />
+      }
+    </View>
   );
 }
 
