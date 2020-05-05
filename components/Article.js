@@ -7,7 +7,17 @@ import Comment from './Comment';
 export default function Article(props) {
 
 
-    let stringDate = "" + props.article.dateDePublication;
+    function dateToString(date) {
+        date = new Date(date)
+        return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+    }
+
+    let img
+    if (props.article.img) {
+        img = {
+            uri: props.article.img
+        }
+    }
 
     const handleAddComment = (comment)=>{
         const newCommentaires = [...props.article.commentaires,comment];
@@ -20,31 +30,31 @@ export default function Article(props) {
         <ScrollView  style={[styles.article]}>
             <View style={[styles.articleCard]}>
                 <View style={styles.articleBody}>
-                    <Text style={[styles.defaultPolice, styles.articleTitle]}>{props.article.titre}</Text>
+                    <Text style={[styles.defaultPolice, styles.articleTitle]}>{props.article.title}</Text>
                     <Image
                         style={styles.articlePic}
                         source={{
                             uri: props.article.img,
                         }}
                     />
-                    <Text style={[styles.defaultPolice, styles.articleContent]}>{props.article.contenu}</Text>
+                    <Text style={[styles.defaultPolice, styles.articleContent]}>{props.article.content}</Text>
                 </View>
                 <View style={styles.articleFooter}>
-                    <Text style={[styles.articleDate]}>Date de publication : {stringDate}</Text>
-                    <Text style={[styles.articleAuthor]}>Ecrit par : {props.article.auteur.nom} {props.article.auteur.prenom}</Text>
+                    <Text style={[styles.articleDate]}>Date de publication : {dateToString(props.article.publishingDate)}</Text>
+                    {/* <Text style={[styles.articleAuthor]}>Ecrit par : {props.article.auteur.nom} {props.article.auteur.prenom}</Text>
                     <View style={styles.articleCompteurs}>
                         <Text style={[styles.defaultPolice, styles.articleComment]}>Commentaire(s): {props.article.compteurCommentaires}</Text>
                         <View>
                             <Text style={[styles.defaultPolice, styles.articleLike]}>Like(s): {props.article.compteurLike.nombrePour}</Text>
                             <Text style={[styles.defaultPolice, styles.articleLike]}>Dislike(s): {props.article.compteurLike.nombreContre}</Text>
                         </View>
-                    </View>
+                    </View> */}
                 </View>
-                <View>
+                {/* <View>
                     <Comment 
                         onAddComment = { handleAddComment }
                         comments={props.article.commentaires}/>
-                </View>
+                </View> */}
 
             </View>
         </ScrollView>

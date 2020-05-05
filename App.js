@@ -24,7 +24,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
 
-  const [loggedInUser, setLoggedInUser] = useState({ username: "test1", password: "pwd1", firstname: "Test", lastname: "One" });
+  const [loggedInUser, setLoggedInUser] = useState();
 
 
   const handleLoginSuccessful = (user) => {

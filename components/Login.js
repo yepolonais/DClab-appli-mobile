@@ -17,7 +17,7 @@ export default function Login(props) {
     }
 
     const handleLogin = () => {
-        console.log("login infos", username, password)
+        //console.log("login infos", username, password)
         props.onLogin(username, password)
     }
 

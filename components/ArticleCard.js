@@ -17,7 +17,7 @@ export default function ArticleCard(props) {
             underlayColor="white"
         >
             <View style={styles.container}>
-                <Text>{props.article.titre}</Text>
+                <Text>{props.article.title}</Text>
             </View>
         </TouchableHighlight>
     )
